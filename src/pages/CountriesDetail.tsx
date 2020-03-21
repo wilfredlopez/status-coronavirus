@@ -20,11 +20,12 @@ const CountriesDetailLanguage: ComponentLanguageMap<{ Back: string }> = {
 const CountriesDetail: React.FC = () => {
   const [country, setCountry] = React.useState<Country | null>(null)
   const { language } = useLanguageContext()
-  const history = useHistory()
+  const { location } = useHistory()
+  const [countryName, setCountryName] = React.useState(
+    location.pathname.split("/")[2],
+  )
 
   React.useEffect(() => {
-    const countryName = history.location.pathname.split("/")[2]
-
     fetch(`https://coronavirus-19-api.herokuapp.com/countries/${countryName}`)
       .then(res => {
         return res.json()
@@ -35,7 +36,12 @@ const CountriesDetail: React.FC = () => {
       .catch(e => {
         console.log(e)
       })
-  }, [history])
+  }, [location, location.pathname, countryName])
+
+  React.useEffect(() => {
+    const name = location.pathname.split("/")[2]
+    setCountryName(name)
+  }, [location, location.pathname])
 
   return (
     <IonPage>
