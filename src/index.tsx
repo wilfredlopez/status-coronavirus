@@ -9,4 +9,17 @@ ReactDOM.render(<App />, document.getElementById("root"))
 // unregister() to register() below. Note this comes with some pitfalls.
 // Learn more about service workers: https://bit.ly/CRA-PWA
 // serviceWorker.unregister();
-serviceWorker.register()
+serviceWorker.register({
+  onUpdate: async registration => {
+    // We want to run this code only if we detect a new service worker is
+    // waiting to be activated.
+    // Details about it: https://developers.google.com/web/fundamentals/primers/service-workers/lifecycle
+    if (registration && registration.waiting) {
+      console.log("Unregistering Service Worker")
+      await registration.unregister()
+      // Once the service worker is unregistered, we can reload the page to let
+      // the browser download a fresh copy of our app (invalidating the cache)
+      window.location.reload()
+    }
+  },
+})
