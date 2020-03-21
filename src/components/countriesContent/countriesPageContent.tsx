@@ -47,7 +47,7 @@ const CountriesPageContent: React.FC<CountriesPageContentProps> = ({
   const [searchText, setSearchText] = React.useState<string>("")
   const { language } = useLanguageContext()
   return (
-    <div className="">
+    <div className="container-md">
       <h1 className="text-center">
         {CountriesPageContentLanguage[language].Header}
       </h1>
@@ -76,7 +76,7 @@ const CountriesPageContent: React.FC<CountriesPageContentProps> = ({
                 <IonLabel slot="start">{countrie.country}</IonLabel>
               </IonItemOption> */}
 
-                <IonNote slot="end">
+                <IonNote slot="end" className="fontsize-1">
                   <p>
                     <IonText color="primary">
                       {CountriesPageContentLanguage[language].Cases}:{" "}

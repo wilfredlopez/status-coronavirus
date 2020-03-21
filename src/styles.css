@@ -6,3 +6,12 @@
   /* font-size: 20px; */
   font-weight: bold;
 }
+
+.fontsize-1 {
+  font-size: 1rem;
+}
+
+.container-md {
+  max-width: 950px;
+  margin: auto;
+}

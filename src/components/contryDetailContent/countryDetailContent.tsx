@@ -49,7 +49,7 @@ const CountryDetailContent: React.FC<CountryDetailContentProps> = ({
   const { language } = useLanguageContext()
   return (
     <>
-      <div className="">
+      <div className="container-md">
         <h1 className="text-center">
           <span>{CountryDetailContentLanguage[language].Header}</span>{" "}
           {countrie?.country}

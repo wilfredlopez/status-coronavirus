@@ -32,7 +32,7 @@ const GlobalPageContentLanguage: ComponentLanguageMap<{
 const GlobalPageContent: React.FC<ContainerProps> = ({ data }) => {
   const { language } = useLanguageContext()
   return (
-    <div className="container text-upper ">
+    <div className="container text-upper container-md ">
       <IonText className="title-size">
         {GlobalPageContentLanguage[language].header}
         {/* Coronavirus COVID-19 Global Cases */}

@@ -25,7 +25,7 @@ const ExploreContainerLanguage: ComponentLanguageMap<{
 const ExploreContainer: React.FC<ContainerProps> = ({ name }) => {
   const { language } = useLanguageContext()
   return (
-    <div className="container">
+    <div className="container container-md">
       <strong>{name}</strong>
       <div>
         <IonText>{ExploreContainerLanguage[language].Created}</IonText>
