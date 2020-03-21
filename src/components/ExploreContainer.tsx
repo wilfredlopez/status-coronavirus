@@ -34,6 +34,7 @@ const ExploreContainer: React.FC<ContainerProps> = ({ name }) => {
       <div>
         <p>{ExploreContainerLanguage[language].Credits}: </p>
 
+        <p>https://www.worldometers.info/coronavirus/</p>
         <p>https://github.com/javieraviles/covidAPI</p>
         <p>Javier Aviles, Ionic Framework, ReactJS</p>
       </div>
