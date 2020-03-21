@@ -5,10 +5,21 @@ import AppHeader from "../components/AppHeader"
 import CountryDetailContent from "../components/contryDetailContent/countryDetailContent"
 import { Country } from "../interfaces/ApiResponse"
 import "./countries.css"
+import { ComponentLanguageMap } from "../context/LanguageContext"
+import useLanguageContext from "../context/useLanguageContext"
+
+const CountriesDetailLanguage: ComponentLanguageMap<{ Back: string }> = {
+  EN: {
+    Back: "Back",
+  },
+  ESP: {
+    Back: "Atras",
+  },
+}
 
 const CountriesDetail: React.FC = () => {
   const [country, setCountry] = React.useState<Country | null>(null)
-
+  const { language } = useLanguageContext()
   const history = useHistory()
 
   React.useEffect(() => {
@@ -31,7 +42,9 @@ const CountriesDetail: React.FC = () => {
       <IonContent>
         <AppHeader titleText={country?.country.toUpperCase() ?? "Country"}>
           <IonButtons slot="start">
-            <IonBackButton defaultHref="/countries">Back</IonBackButton>
+            <IonBackButton defaultHref="/countries">
+              {CountriesDetailLanguage[language].Back}
+            </IonBackButton>
           </IonButtons>
         </AppHeader>
         <CountryDetailContent countrie={country} />

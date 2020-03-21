@@ -1,5 +1,13 @@
+import {
+  IonCol,
+  IonHeader,
+  IonSelect,
+  IonSelectOption,
+  IonTitle,
+  IonToolbar,
+} from "@ionic/react"
 import React, { PropsWithChildren } from "react"
-import { IonHeader, IonToolbar, IonTitle } from "@ionic/react"
+import useLanguageContext from "../context/useLanguageContext"
 
 interface Props extends PropsWithChildren<any> {
   titleText: string
@@ -8,6 +16,7 @@ interface Props extends PropsWithChildren<any> {
 }
 
 const AppHeader = ({ titleText, color, size, children }: Props) => {
+  const { language, changeLanguage } = useLanguageContext()
   return (
     <IonHeader>
       <IonToolbar
@@ -17,6 +26,17 @@ const AppHeader = ({ titleText, color, size, children }: Props) => {
       >
         <IonTitle size={size ?? "large"}>{titleText}</IonTitle>
         {children}
+        <IonCol slot="end">
+          <IonSelect
+            value={language}
+            onIonChange={e => {
+              changeLanguage(e.detail.value)
+            }}
+          >
+            <IonSelectOption value="ESP">ESP</IonSelectOption>
+            <IonSelectOption value="EN">EN</IonSelectOption>
+          </IonSelect>
+        </IonCol>
       </IonToolbar>
     </IonHeader>
   )

@@ -1,11 +1,16 @@
 import React from "react"
 import { ThemeContextProvider } from "./context/themeContext"
+import { LanguageContextProvider } from "./context/LanguageContext"
 
 interface Props {}
 
 class RootProvider extends React.Component<Props> {
   render() {
-    return <ThemeContextProvider>{this.props.children}</ThemeContextProvider>
+    return (
+      <ThemeContextProvider>
+        <LanguageContextProvider>{this.props.children}</LanguageContextProvider>
+      </ThemeContextProvider>
+    )
   }
 }
 

@@ -1,21 +1,38 @@
 import React from "react"
 import "./ExploreContainer.css"
 import { IonText } from "@ionic/react"
+import { ComponentLanguageMap } from "../context/LanguageContext"
+import useLanguageContext from "../context/useLanguageContext"
 
 interface ContainerProps {
   name: string
 }
 
+const ExploreContainerLanguage: ComponentLanguageMap<{
+  Created: string
+  Credits: string
+}> = {
+  EN: {
+    Created: "Created By Wilfred Lopez.",
+    Credits: "Credits",
+  },
+  ESP: {
+    Created: "Creada por Wilfred Lopez.",
+    Credits: "Creditos",
+  },
+}
+
 const ExploreContainer: React.FC<ContainerProps> = ({ name }) => {
+  const { language } = useLanguageContext()
   return (
     <div className="container">
       <strong>{name}</strong>
       <div>
-        <IonText>Created By Wilfred Lopez.</IonText>
+        <IonText>{ExploreContainerLanguage[language].Created}</IonText>
       </div>
       <hr />
       <div>
-        <p>Credits: </p>
+        <p>{ExploreContainerLanguage[language].Credits}: </p>
 
         <p>https://github.com/javieraviles/covidAPI</p>
         <p>Javier Aviles, Ionic Framework, ReactJS</p>

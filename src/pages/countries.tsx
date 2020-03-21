@@ -4,10 +4,21 @@ import AppHeader from "../components/AppHeader"
 import CountriesPageContent from "../components/countriesContent/countriesPageContent"
 import { CountriesApiRes } from "../interfaces/ApiResponse"
 import "./countries.css"
+import { ComponentLanguageMap } from "../context/LanguageContext"
+import useLanguageContext from "../context/useLanguageContext"
+
+const CountriesLanguage: ComponentLanguageMap<{ Title: string }> = {
+  EN: {
+    Title: "Countries",
+  },
+  ESP: {
+    Title: "Paises",
+  },
+}
 
 const Countries: React.FC = () => {
   const [countries, setCountries] = React.useState<CountriesApiRes>([])
-
+  const { language } = useLanguageContext()
   React.useEffect(() => {
     fetch("https://coronavirus-19-api.herokuapp.com/countries")
       .then(res => {
@@ -24,7 +35,7 @@ const Countries: React.FC = () => {
   return (
     <IonPage>
       <IonContent>
-        <AppHeader titleText={"Countries"} />
+        <AppHeader titleText={CountriesLanguage[language].Title} />
 
         <CountriesPageContent data={countries} />
       </IonContent>

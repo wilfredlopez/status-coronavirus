@@ -4,9 +4,21 @@ import AppHeader from "../components/AppHeader"
 import GlobalPageContent from "../components/globalPageContent"
 import { GlobalApiRes } from "../interfaces/ApiResponse"
 import "./global.css"
+import useLanguageContext from "../context/useLanguageContext"
+import { ComponentLanguageMap } from "../context/LanguageContext"
+
+const GlobalLanguage: ComponentLanguageMap<{ title: string }> = {
+  EN: {
+    title: "COVID-19 Global Cases",
+  },
+  ESP: {
+    title: "COVID-19 Casos Globales",
+  },
+}
 
 const Global: React.FC = () => {
   const [globalData, setGlobalData] = React.useState<GlobalApiRes | null>(null)
+  const { language } = useLanguageContext()
 
   React.useEffect(() => {
     fetch("https://coronavirus-19-api.herokuapp.com/all")
@@ -24,7 +36,7 @@ const Global: React.FC = () => {
   return (
     <IonPage>
       <IonContent>
-        <AppHeader titleText="COVID-19 Global Cases" />
+        <AppHeader titleText={GlobalLanguage[language].title} />
 
         <GlobalPageContent data={globalData} />
       </IonContent>
