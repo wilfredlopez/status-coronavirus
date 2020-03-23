@@ -1,6 +1,6 @@
 import React from "react"
 import "./ExploreContainer.css"
-import { IonText } from "@ionic/react"
+import { IonText, IonItem, IonLabel } from "@ionic/react"
 import { ComponentLanguageMap } from "../context/LanguageContext"
 import useLanguageContext from "../context/useLanguageContext"
 
@@ -11,14 +11,17 @@ interface ContainerProps {
 const ExploreContainerLanguage: ComponentLanguageMap<{
   Created: string
   Credits: string
+  INFO: string
 }> = {
   EN: {
-    Created: "Created By Wilfred Lopez.",
+    Created: "Created By",
     Credits: "Credits",
+    INFO: "Information from",
   },
   ESP: {
-    Created: "Creada por Wilfred Lopez.",
+    Created: "Creada por",
     Credits: "Creditos",
+    INFO: "Informacion de",
   },
 }
 
@@ -26,13 +29,39 @@ const ExploreContainer: React.FC<ContainerProps> = ({ name }) => {
   const { language } = useLanguageContext()
   return (
     <div className="container container-md">
-      <strong>{name}</strong>
-      <div>
-        <IonText>{ExploreContainerLanguage[language].Created}</IonText>
-      </div>
+      <strong
+        style={{
+          textDecoration: "underline",
+        }}
+      >
+        {name}
+      </strong>
+      <div></div>
+      <IonItem className="mt-2 text-center">
+        <IonLabel slot="start">
+          {" "}
+          {ExploreContainerLanguage[language].Created}:
+        </IonLabel>
+        <IonText className="text-center">
+          <strong>Wilfred Lopez.</strong>
+        </IonText>
+      </IonItem>
+      <IonItem className="mt-2">
+        <IonLabel slot="start">
+          <span>{ExploreContainerLanguage[language].INFO}</span>{" "}
+        </IonLabel>
+        <IonText>
+          {" "}
+          <a href="www.worldometers.info" target="_blank">
+            www.worldometers.info
+          </a>
+        </IonText>
+      </IonItem>
       <hr />
-      <div>
-        <p>{ExploreContainerLanguage[language].Credits}: </p>
+      <div className="mt-2">
+        <p>
+          <strong>{ExploreContainerLanguage[language].Credits}: </strong>
+        </p>
 
         <p>https://www.worldometers.info/coronavirus/</p>
         <p>https://github.com/javieraviles/covidAPI</p>

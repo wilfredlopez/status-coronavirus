@@ -37,7 +37,7 @@ const Countries: React.FC = () => {
       <IonContent>
         <AppHeader titleText={CountriesLanguage[language].Title} />
 
-        <CountriesPageContent data={countries} />
+        {countries.length > 0 && <CountriesPageContent data={countries} />}
       </IonContent>
     </IonPage>
   )

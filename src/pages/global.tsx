@@ -9,10 +9,10 @@ import { ComponentLanguageMap } from "../context/LanguageContext"
 
 const GlobalLanguage: ComponentLanguageMap<{ title: string }> = {
   EN: {
-    title: "COVID-19 Global Cases",
+    title: "Global Cases - COVID-19 ",
   },
   ESP: {
-    title: "COVID-19 Casos Globales",
+    title: "Casos Globales - COVID-19",
   },
 }
 

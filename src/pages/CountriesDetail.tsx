@@ -53,7 +53,7 @@ const CountriesDetail: React.FC = () => {
             </IonBackButton>
           </IonButtons>
         </AppHeader>
-        <CountryDetailContent countrie={country} />
+        {country && <CountryDetailContent countrie={country} />}
       </IonContent>
     </IonPage>
   )

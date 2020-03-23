@@ -19,9 +19,11 @@ const CountriesPageContentLanguage: ComponentLanguageMap<{
   Header: string
   Credits: string
   Cases: string
+  Today: string
   Deaths: string
   Recovered: string
   placeHolder: string
+  todayDeaths: string
 }> = {
   EN: {
     Header: "Coronavirus Cases Per Country",
@@ -30,6 +32,8 @@ const CountriesPageContentLanguage: ComponentLanguageMap<{
     Deaths: "Deaths",
     Recovered: "Recovered",
     placeHolder: "Search",
+    Today: "Cases Today",
+    todayDeaths: "Deaths Today",
   },
   ESP: {
     Header: "Casos de Coronavirus Por Pais",
@@ -38,6 +42,8 @@ const CountriesPageContentLanguage: ComponentLanguageMap<{
     Deaths: "Muertes",
     Recovered: "Recuperados",
     placeHolder: "Buscar",
+    Today: "Casos Hoy",
+    todayDeaths: "Muertes Hoy",
   },
 }
 
@@ -76,21 +82,60 @@ const CountriesPageContent: React.FC<CountriesPageContentProps> = ({
                 <IonLabel slot="start">{countrie.country}</IonLabel>
               </IonItemOption> */}
 
-                <IonNote slot="end" className="fontsize-1">
+                <IonNote
+                  slot="end"
+                  className="fontsize-1"
+                  style={{ flex: "1 35%" }}
+                >
                   <p>
-                    <IonText color="primary">
+                    <IonText>
                       {CountriesPageContentLanguage[language].Cases}:{" "}
-                      <strong> {countrie.cases}</strong>
+                    </IonText>
+                    <IonText color="primary">
+                      <strong>
+                        {" "}
+                        {Intl.NumberFormat().format(countrie.cases)}
+                      </strong>
+                    </IonText>
+
+                    <IonText className="pl-1">
+                      {CountriesPageContentLanguage[language].Today}:{" "}
+                    </IonText>
+                    <IonText color="primary">
+                      <strong>
+                        {" "}
+                        {Intl.NumberFormat().format(countrie.todayCases)}
+                      </strong>
                     </IonText>
                   </p>
-                  <IonText color="danger">
+
+                  <IonText>
                     {CountriesPageContentLanguage[language].Deaths}:{" "}
-                    <strong> {countrie.deaths}</strong>
+                  </IonText>
+                  <IonText color="danger">
+                    <strong>
+                      {" "}
+                      {Intl.NumberFormat().format(countrie.deaths)}
+                    </strong>
+                  </IonText>
+                  <IonText className="pl-1">
+                    {CountriesPageContentLanguage[language].todayDeaths} :{" "}
+                  </IonText>
+                  <IonText color="danger">
+                    <strong>
+                      {" "}
+                      {Intl.NumberFormat().format(countrie.todayDeaths)}
+                    </strong>
                   </IonText>
                   <p>
-                    <IonText color="success">
+                    <IonText>
                       {CountriesPageContentLanguage[language].Recovered}:{" "}
-                      <strong> {countrie.recovered}</strong>
+                    </IonText>
+                    <IonText color="success">
+                      <strong>
+                        {" "}
+                        {Intl.NumberFormat().format(countrie.recovered)}
+                      </strong>
                     </IonText>
                   </p>
                 </IonNote>

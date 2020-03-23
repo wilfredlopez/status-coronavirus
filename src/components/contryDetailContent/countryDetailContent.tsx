@@ -3,6 +3,7 @@ import React from "react"
 import { Country } from "../../interfaces/ApiResponse"
 import useLanguageContext from "../../context/useLanguageContext"
 import { ComponentLanguageMap } from "../../context/LanguageContext"
+import { formatNumber } from "../../utils/formatNumber"
 
 interface CountryDetailContentProps {
   countrie: Country | null
@@ -58,25 +59,11 @@ const CountryDetailContent: React.FC<CountryDetailContentProps> = ({
         <IonList>
           <IonItem>
             <p>
-              <IonText color="primary">
+              <IonText>
                 {CountryDetailContentLanguage[language].Cases}:{" "}
-                <strong>{countrie?.cases}</strong>
               </IonText>
-            </p>
-          </IonItem>
-          <IonItem>
-            <p>
-              <IonText color="danger">
-                {CountryDetailContentLanguage[language].Deaths}:{" "}
-                <strong>{countrie?.deaths}</strong>
-              </IonText>
-            </p>
-          </IonItem>
-          <IonItem>
-            <p>
-              <IonText color="success">
-                {CountryDetailContentLanguage[language].Recovered}:{" "}
-                <strong>{countrie?.recovered}</strong>
+              <IonText color="primary">
+                <strong> {formatNumber(countrie?.cases)}</strong>
               </IonText>
             </p>
           </IonItem>
@@ -84,7 +71,19 @@ const CountryDetailContent: React.FC<CountryDetailContentProps> = ({
             <p>
               <IonText>
                 {CountryDetailContentLanguage[language].TodayCases}:{" "}
-                <strong>{countrie?.todayCases}</strong>
+              </IonText>
+              <IonText color="primary">
+                <strong> {formatNumber(countrie?.todayCases)}</strong>
+              </IonText>
+            </p>
+          </IonItem>
+          <IonItem>
+            <p>
+              <IonText>
+                {CountryDetailContentLanguage[language].Deaths}:{" "}
+              </IonText>
+              <IonText color="danger">
+                <strong> {formatNumber(countrie?.deaths)}</strong>
               </IonText>
             </p>
           </IonItem>
@@ -92,15 +91,37 @@ const CountryDetailContent: React.FC<CountryDetailContentProps> = ({
             <p>
               <IonText>
                 {CountryDetailContentLanguage[language].TodayDeaths}:{" "}
-                <strong>{countrie?.todayDeaths}</strong>
+              </IonText>
+              <IonText color="danger">
+                <strong> {formatNumber(countrie?.todayDeaths)}</strong>
               </IonText>
             </p>
           </IonItem>
           <IonItem>
             <p>
               <IonText>
+                {CountryDetailContentLanguage[language].Recovered}:{" "}
+              </IonText>
+              <IonText color="success">
+                <strong> {formatNumber(countrie?.recovered)}</strong>
+              </IonText>
+            </p>
+          </IonItem>
+
+          <IonItem>
+            <p>
+              <IonText>
                 {CountryDetailContentLanguage[language].Active}:{" "}
-                <strong>{countrie?.active}</strong>
+                <strong> {formatNumber(countrie?.active)}</strong>
+              </IonText>
+            </p>
+          </IonItem>
+
+          <IonItem>
+            <p>
+              <IonText>
+                {CountryDetailContentLanguage[language].Critical}:{" "}
+                <strong> {formatNumber(countrie?.critical)}</strong>
               </IonText>
             </p>
           </IonItem>
@@ -108,15 +129,7 @@ const CountryDetailContent: React.FC<CountryDetailContentProps> = ({
             <p>
               <IonText>
                 {CountryDetailContentLanguage[language].casePer}:{" "}
-                <strong> {countrie?.casesPerOneMillion}</strong>
-              </IonText>
-            </p>
-          </IonItem>
-          <IonItem>
-            <p>
-              <IonText>
-                {CountryDetailContentLanguage[language].Critical}:{" "}
-                <strong>{countrie?.critical}</strong>
+                <strong> {formatNumber(countrie?.casesPerOneMillion)}</strong>
               </IonText>
             </p>
           </IonItem>

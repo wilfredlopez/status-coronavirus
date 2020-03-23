@@ -1,4 +1,4 @@
-import { IonText, IonCard, IonCardContent } from "@ionic/react"
+import { IonText, IonCard, IonCardContent, IonCardHeader } from "@ionic/react"
 import React from "react"
 import { GlobalApiRes } from "../interfaces/ApiResponse"
 import "./globalPageContent.css"
@@ -16,13 +16,13 @@ const GlobalPageContentLanguage: ComponentLanguageMap<{
   totalRecovered: string
 }> = {
   EN: {
-    header: "Coronavirus COVID-19 Global Cases",
+    header: "Global Cases - COVID-19",
     totalCases: "Total Cases",
     totalDeaths: "Total Deaths",
     totalRecovered: "Total Recovered",
   },
   ESP: {
-    header: "Coronavirus COVID-19 Casos Globales",
+    header: "Casos Globales - COVID-19",
     totalCases: "Casos en Total ",
     totalDeaths: "Muertes en Total",
     totalRecovered: "Recuperados en Total",
@@ -39,25 +39,36 @@ const GlobalPageContent: React.FC<ContainerProps> = ({ data }) => {
       </IonText>
       <IonCard>
         <IonCardContent>
-          <IonText color="primary" className="font-20">
+          <IonCardHeader>
             {GlobalPageContentLanguage[language].totalCases}:
-            <strong> {data?.cases}</strong>
+          </IonCardHeader>
+          {/* <IonText className="font-20">
+          </IonText> */}
+          <IonText color="primary" className="font-20">
+            <strong> {Intl.NumberFormat().format(data?.cases ?? 0)}</strong>
           </IonText>
         </IonCardContent>
       </IonCard>
       <IonCard>
+        <IonCardHeader>
+          {GlobalPageContentLanguage[language].totalDeaths}:{" "}
+        </IonCardHeader>
         <IonCardContent>
+          {/* <IonText className="font-20"></IonText> */}
           <IonText color="danger" className="font-20">
-            {GlobalPageContentLanguage[language].totalDeaths}:{" "}
-            <strong>{data?.deaths}</strong>
+            <strong>{Intl.NumberFormat().format(data?.deaths!)}</strong>
           </IonText>
         </IonCardContent>
       </IonCard>
       <IonCard>
         <IonCardContent>
-          <IonText color="success" className="font-20">
+          <IonCardHeader>
             {GlobalPageContentLanguage[language].totalRecovered}:{" "}
-            <strong>{data?.recovered}</strong>
+          </IonCardHeader>
+          {/* <IonText className="font-20">
+          </IonText> */}
+          <IonText color="success" className="font-20">
+            <strong>{Intl.NumberFormat().format(data?.recovered!)}</strong>
           </IonText>
         </IonCardContent>
       </IonCard>
