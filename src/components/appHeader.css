@@ -1,0 +1,13 @@
+.language-label {
+  font-size: 0.8rem;
+  margin-left: auto;
+  padding: 6px;
+}
+.language-select {
+  padding: 0;
+}
+
+.language-col {
+  display: flex;
+  align-items: center;
+}

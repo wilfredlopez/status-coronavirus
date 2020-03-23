@@ -1,6 +1,6 @@
 import React from "react"
-import "./ExploreContainer.css"
-import { IonText, IonItem, IonLabel } from "@ionic/react"
+import "./AboutPageContent.css"
+import { IonText, IonItem, IonLabel, IonRouterLink } from "@ionic/react"
 import { ComponentLanguageMap } from "../context/LanguageContext"
 import useLanguageContext from "../context/useLanguageContext"
 
@@ -25,7 +25,7 @@ const ExploreContainerLanguage: ComponentLanguageMap<{
   },
 }
 
-const ExploreContainer: React.FC<ContainerProps> = ({ name }) => {
+const AboutPageContent: React.FC<ContainerProps> = ({ name }) => {
   const { language } = useLanguageContext()
   return (
     <div className="container container-md">
@@ -38,24 +38,26 @@ const ExploreContainer: React.FC<ContainerProps> = ({ name }) => {
       </strong>
       <div></div>
       <IonItem className="mt-2 text-center">
-        <IonLabel slot="start">
+        <IonLabel>
           {" "}
-          {ExploreContainerLanguage[language].Created}:
+          {ExploreContainerLanguage[language].Created}{" "}
+          <IonText className="text-center">
+            <strong>Wilfred Lopez.</strong>
+          </IonText>
         </IonLabel>
-        <IonText className="text-center">
-          <strong>Wilfred Lopez.</strong>
-        </IonText>
       </IonItem>
       <IonItem className="mt-2">
-        <IonLabel slot="start">
+        <IonLabel className="text-center">
           <span>{ExploreContainerLanguage[language].INFO}</span>{" "}
+          <IonText>
+            {" "}
+            <IonRouterLink href="https://worldometers.info" target="_blank">
+              {/* <a href="www.worldometers.info" target="_blank"> */}
+              www.worldometers.info
+              {/* </a> */}
+            </IonRouterLink>
+          </IonText>
         </IonLabel>
-        <IonText>
-          {" "}
-          <a href="www.worldometers.info" target="_blank">
-            www.worldometers.info
-          </a>
-        </IonText>
       </IonItem>
       <hr />
       <div className="mt-2">
@@ -71,4 +73,4 @@ const ExploreContainer: React.FC<ContainerProps> = ({ name }) => {
   )
 }
 
-export default ExploreContainer
+export default AboutPageContent

@@ -1,7 +1,7 @@
 import { IonContent, IonPage } from "@ionic/react"
 import React from "react"
 import AppHeader from "../components/AppHeader"
-import ExploreContainer from "../components/ExploreContainer"
+import AboutPageContent from "../components/AboutPageContent"
 import "./about.css"
 import { ComponentLanguageMap } from "../context/LanguageContext"
 import useLanguageContext from "../context/useLanguageContext"
@@ -23,7 +23,7 @@ const About: React.FC = () => {
     <IonPage>
       <IonContent>
         <AppHeader titleText={AboutLanguage[language].Title} />
-        <ExploreContainer name={AboutLanguage[language].name} />
+        <AboutPageContent name={AboutLanguage[language].name} />
       </IonContent>
     </IonPage>
   )
