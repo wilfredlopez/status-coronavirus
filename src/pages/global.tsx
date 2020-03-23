@@ -2,10 +2,10 @@ import { IonContent, IonPage } from "@ionic/react"
 import React from "react"
 import AppHeader from "../components/AppHeader"
 import GlobalPageContent from "../components/globalPageContent"
-import { GlobalApiRes } from "../interfaces/ApiResponse"
-import "./global.css"
-import useLanguageContext from "../context/useLanguageContext"
+import { useCountriesContext } from "../context/countriesContext"
 import { ComponentLanguageMap } from "../context/LanguageContext"
+import useLanguageContext from "../context/useLanguageContext"
+import "./global.css"
 
 const GlobalLanguage: ComponentLanguageMap<{ title: string }> = {
   EN: {
@@ -17,22 +17,8 @@ const GlobalLanguage: ComponentLanguageMap<{ title: string }> = {
 }
 
 const Global: React.FC = () => {
-  const [globalData, setGlobalData] = React.useState<GlobalApiRes | null>(null)
   const { language } = useLanguageContext()
-
-  React.useEffect(() => {
-    fetch("https://coronavirus-19-api.herokuapp.com/all")
-      .then(res => {
-        return res.json()
-      })
-      .then(data => {
-        setGlobalData(data)
-      })
-      .catch(e => {
-        console.log(e)
-      })
-  }, [])
-
+  const { globalData } = useCountriesContext()
   return (
     <IonPage>
       <IonContent>

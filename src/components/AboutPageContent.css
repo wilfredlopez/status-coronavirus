@@ -7,11 +7,16 @@
   transform: translateY(-50%);
 }
 
+.wrapper {
+  text-align: center;
+}
+.wrapper strong,
 .container strong {
   font-size: 20px;
   line-height: 26px;
 }
 
+.wrapper p,
 .container p {
   font-size: 16px;
   line-height: 22px;
