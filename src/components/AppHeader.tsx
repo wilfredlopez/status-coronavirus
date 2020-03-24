@@ -10,18 +10,18 @@ import {
 import React, { PropsWithChildren } from "react"
 import useLanguageContext from "../context/useLanguageContext"
 import "./appHeader.css"
-import { ComponentLanguageMap } from "../context/LanguageContext"
+// import { ComponentLanguageMap } from "../context/LanguageContext"
 
-const AppHeaderLanguage: ComponentLanguageMap<{
-  language: string
-}> = {
-  EN: {
-    language: "Language",
-  },
-  ESP: {
-    language: "Idioma",
-  },
-}
+// const AppHeaderLanguage: ComponentLanguageMap<{
+//   language: string
+// }> = {
+//   EN: {
+//     language: "Language",
+//   },
+//   ESP: {
+//     language: "Idioma",
+//   },
+// }
 
 interface Props extends PropsWithChildren<any> {
   titleText: string
@@ -42,10 +42,17 @@ const AppHeader = ({ titleText, color, size, children }: Props) => {
         {children}
         <IonCol slot="end" className="language-col">
           <IonText className="language-label">
-            {AppHeaderLanguage[language].language}:
+            Language/Idioma
+            {/* {AppHeaderLanguage[language].language}: */}
           </IonText>
           <IonSelect
-            interface="popover"
+            // interface="popover"
+            interfaceOptions={{
+              header: "Language/Idioma",
+              // subHeader: "Select your toppings",
+              // message: "$1.00 per topping",
+              // translucent: true,
+            }}
             className="language-select"
             value={language}
             onIonChange={e => {
