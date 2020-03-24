@@ -7,7 +7,7 @@ import {
   IonTabs,
 } from "@ionic/react"
 import { IonReactRouter } from "@ionic/react-router"
-import { flag, globe, informationCircle } from "ionicons/icons"
+import { flag, globe, informationCircle, list } from "ionicons/icons"
 import React from "react"
 import { Redirect, Route } from "react-router-dom"
 import About from "./pages/about"
@@ -16,18 +16,22 @@ import CountriesDetail from "./pages/CountriesDetail"
 import Global from "./pages/global"
 import useLanguageContext from "./context/useLanguageContext"
 import { ComponentLanguageMap } from "./context/LanguageContext"
+import TopCasesToday from "./pages/TopCasesToday"
 
 const RouterLanguage: ComponentLanguageMap<{
   Global: string
   Countries: string
   About: string
+  Top: string
 }> = {
   EN: {
+    Top: "Top 10",
     About: "About us",
     Global: "Global",
     Countries: "Countries",
   },
   ESP: {
+    Top: "Top 10",
     Global: "Global",
     Countries: "Paises",
     About: "Acerca de",
@@ -47,6 +51,7 @@ const Router: React.FC = () => {
             component={CountriesDetail}
             exact={true}
           />
+          <Route path="/top-ten" component={TopCasesToday} exact={true} />
           <Route path="/About" component={About} />
           <Route
             path="/"
@@ -62,6 +67,10 @@ const Router: React.FC = () => {
           <IonTabButton tab="Countries" href="/countries">
             <IonIcon icon={flag} />
             <IonLabel>{RouterLanguage[language].Countries}</IonLabel>
+          </IonTabButton>
+          <IonTabButton tab="Top 10" href="/top-ten">
+            <IonIcon icon={list} />
+            <IonLabel>{RouterLanguage[language].Top}</IonLabel>
           </IonTabButton>
           <IonTabButton tab="About" href="/About">
             <IonIcon icon={informationCircle} />

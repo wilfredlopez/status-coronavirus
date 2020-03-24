@@ -11,7 +11,7 @@ import useLanguageContext from "../context/useLanguageContext"
 import { GlobalApiRes } from "../interfaces/ApiResponse"
 import { formatNumber } from "../utils/formatNumber"
 import "./globalPageContent.css"
-import TopDeaths from "./topDeaths/TopDeaths"
+// import TopDeaths from "./topDeaths/TopDeaths"
 
 interface ContainerProps {
   data: GlobalApiRes | null
@@ -83,7 +83,7 @@ const GlobalPageContent: React.FC<ContainerProps> = ({ data }) => {
           </IonCardContent>
         </IonCard>
       </div>
-      <TopDeaths />
+      {/* <TopDeaths /> */}
     </IonGrid>
   )
 }

@@ -10,16 +10,16 @@ const TopDeathsLanguage: ComponentLanguageMap<{
   TopToday: string
 }> = {
   EN: {
-    Overall: "Total Deaths",
-    TopToday: `Today's Deaths`,
+    Overall: "Total Cases",
+    TopToday: `Today's Cases`,
   },
   ESP: {
-    Overall: "Muertes en Total",
-    TopToday: `Muertes Hoy`,
+    Overall: "Casos en Total",
+    TopToday: `Casos Hoy`,
   },
 }
 
-const TopDeaths = () => {
+const TopCases = () => {
   const { countries } = useCountriesContext()
   const { language } = useLanguageContext()
 
@@ -34,19 +34,19 @@ const TopDeaths = () => {
           <IonText className="text-center">Top Deaths by Country</IonText>
         </IonListHeader> */}
           {countries
-            .sort((a, b) => (a.deaths > b.deaths ? -1 : 1))
+            .sort((a, b) => (a.cases > b.cases ? -1 : 1))
             .slice(0, 10)
             .map((c, i) => {
               return (
                 <IonItem
-                  key={c.country + c.deaths + i}
+                  key={c.country + c.cases + i}
                   color={i % 2 ? undefined : "light"}
                 >
                   <IonLabel>
                     {i + 1}- {c.country}
                   </IonLabel>
                   <IonText color="danger">
-                    <strong>{formatNumber(c.deaths)}</strong>
+                    <strong>{formatNumber(c.cases)}</strong>
                   </IonText>
                 </IonItem>
               )
@@ -59,19 +59,19 @@ const TopDeaths = () => {
         </IonText>
         <IonList>
           {countries
-            .sort((a, b) => (a.todayDeaths > b.todayDeaths ? -1 : 1))
+            .sort((a, b) => (a.todayCases > b.todayCases ? -1 : 1))
             .slice(0, 10)
             .map((c, i) => {
               return (
                 <IonItem
-                  key={c.country + c.deaths + i}
+                  key={c.country + c.cases + i}
                   color={i % 2 ? undefined : "light"}
                 >
                   <IonLabel>
                     {i + 1}- {c.country}
                   </IonLabel>
                   <IonText color="danger">
-                    <strong>{formatNumber(c.todayDeaths)}</strong>
+                    <strong>{formatNumber(c.todayCases)}</strong>
                   </IonText>
                 </IonItem>
               )
@@ -82,4 +82,4 @@ const TopDeaths = () => {
   )
 }
 
-export default TopDeaths
+export default TopCases

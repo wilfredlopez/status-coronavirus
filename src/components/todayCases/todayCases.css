@@ -1,0 +1,7 @@
+.special-divider {
+  height: 3px;
+  border-width: 0px;
+  box-sizing: border-box;
+  background: #cac8c8;
+  border-radius: 100%;
+}
