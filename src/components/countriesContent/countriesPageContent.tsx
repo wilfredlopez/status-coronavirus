@@ -46,6 +46,7 @@ const CountriesPageContent: React.FC<CountriesPageContentProps> = ({
               ? d.country.toLowerCase().includes(searchText.toLowerCase())
               : d !== undefined,
           )
+          .sort((a, b) => (a.cases > b.cases ? -1 : 1))
           .map(country => {
             return (
               <CountriesPageContentItem
