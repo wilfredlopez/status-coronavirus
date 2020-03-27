@@ -10,12 +10,12 @@ const TodayCasesLanguage: ComponentLanguageMap<{
   TopCases: string
 }> = {
   EN: {
-    TopToday: `Today's Deaths (Top 10 Countries)`,
-    TopCases: `Today's Cases (Top 10 Countries)`,
+    TopToday: `Deaths (Top 10 Countries)`,
+    TopCases: `Cases (Top 10 Countries)`,
   },
   ESP: {
-    TopToday: `Muertes Hoy (Top 10 Paises)`,
-    TopCases: "Casos Hoy (Top 10 Paises)",
+    TopToday: `Muertes (Top 10 Paises)`,
+    TopCases: "Casos (Top 10 Paises)",
   },
 }
 
