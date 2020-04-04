@@ -37,7 +37,7 @@ const AboutPageContent: React.FC<ContainerProps> = ({ name }) => {
         {name}
       </strong>
       <div></div>
-      <IonItem className="mt-2 text-center">
+      <IonItem className="mt-2 text-center" lines="none">
         <IonLabel>
           {" "}
           {ExploreContainerLanguage[language].Created}{" "}
@@ -46,7 +46,7 @@ const AboutPageContent: React.FC<ContainerProps> = ({ name }) => {
           </IonText>
         </IonLabel>
       </IonItem>
-      <IonItem className="mt-2">
+      <IonItem className="mt-2" lines="none">
         <IonLabel className="text-center">
           <span>{ExploreContainerLanguage[language].INFO}</span>{" "}
           <IonText>

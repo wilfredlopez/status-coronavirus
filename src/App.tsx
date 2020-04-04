@@ -15,7 +15,7 @@ import "@ionic/react/css/typography.css"
 import React from "react"
 
 /* Theme variables */
-import "./theme/variables.css"
+import "./theme/newVariables.css"
 import "./styles.css"
 import RootProvider from "./RootProvider"
 import Router from "./Router"

@@ -16,4 +16,7 @@ export interface Country {
   active: number
   critical: number
   casesPerOneMillion: number
+  deathsPerOneMillion: number
+  totalTests: number
+  testsPerOneMillion: number
 }

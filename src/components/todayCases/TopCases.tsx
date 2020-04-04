@@ -34,6 +34,7 @@ const TopCases = () => {
           <IonText className="text-center">Top Deaths by Country</IonText>
         </IonListHeader> */}
           {countries
+            .filter((c) => c.country !== "World")
             .sort((a, b) => (a.cases > b.cases ? -1 : 1))
             .slice(0, 10)
             .map((c, i) => {
@@ -59,6 +60,7 @@ const TopCases = () => {
         </IonText>
         <IonList>
           {countries
+            .filter((c) => c.country !== "World")
             .sort((a, b) => (a.todayCases > b.todayCases ? -1 : 1))
             .slice(0, 10)
             .map((c, i) => {

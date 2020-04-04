@@ -19,6 +19,9 @@ const CountryDetailContentLanguage: ComponentLanguageMap<{
   Active: string
   casePer: string
   Critical: string
+  deathsPerOneMillion: string
+  testsPerOneMillion: string
+  totalTests: string
 }> = {
   EN: {
     Header: "Coronavirus Cases In",
@@ -30,6 +33,9 @@ const CountryDetailContentLanguage: ComponentLanguageMap<{
     Active: "Active",
     casePer: "Cases Per One Million",
     Critical: "Critical",
+    deathsPerOneMillion: "Deaths Per One Million",
+    testsPerOneMillion: "Tests Per One Million",
+    totalTests: "Total Tests",
   },
   ESP: {
     Header: "Casos de Coronavirus en",
@@ -41,6 +47,9 @@ const CountryDetailContentLanguage: ComponentLanguageMap<{
     Active: "Activos",
     casePer: "Casos Por Million",
     Critical: "Critico",
+    deathsPerOneMillion: "Muertes Por Millon",
+    testsPerOneMillion: "Pruevas Por Millon",
+    totalTests: "Total De Pruevas",
   },
 }
 
@@ -100,6 +109,29 @@ const CountryDetailContent: React.FC<CountryDetailContentProps> = ({
           <IonItem>
             <p>
               <IonText>
+                {CountryDetailContentLanguage[language].deathsPerOneMillion}:{" "}
+                <IonText color="danger">
+                  <strong>
+                    {" "}
+                    {formatNumber(countrie?.deathsPerOneMillion)}
+                  </strong>
+                </IonText>
+              </IonText>
+            </p>
+          </IonItem>
+          <IonItem>
+            <p>
+              <IonText>
+                {CountryDetailContentLanguage[language].Critical}:{" "}
+              </IonText>
+              <IonText color="danger">
+                <strong> {formatNumber(countrie?.critical)}</strong>
+              </IonText>
+            </p>
+          </IonItem>
+          <IonItem>
+            <p>
+              <IonText>
                 {CountryDetailContentLanguage[language].Recovered}:{" "}
               </IonText>
               <IonText color="success">
@@ -120,16 +152,25 @@ const CountryDetailContent: React.FC<CountryDetailContentProps> = ({
           <IonItem>
             <p>
               <IonText>
-                {CountryDetailContentLanguage[language].Critical}:{" "}
-                <strong> {formatNumber(countrie?.critical)}</strong>
+                {CountryDetailContentLanguage[language].casePer}:{" "}
+                <strong> {formatNumber(countrie?.casesPerOneMillion)}</strong>
               </IonText>
             </p>
           </IonItem>
           <IonItem>
             <p>
               <IonText>
-                {CountryDetailContentLanguage[language].casePer}:{" "}
-                <strong> {formatNumber(countrie?.casesPerOneMillion)}</strong>
+                {CountryDetailContentLanguage[language].testsPerOneMillion}:{" "}
+                <strong> {formatNumber(countrie?.testsPerOneMillion)}</strong>
+              </IonText>
+            </p>
+          </IonItem>
+
+          <IonItem>
+            <p>
+              <IonText>
+                {CountryDetailContentLanguage[language].totalTests}:{" "}
+                <strong> {formatNumber(countrie?.totalTests)}</strong>
               </IonText>
             </p>
           </IonItem>

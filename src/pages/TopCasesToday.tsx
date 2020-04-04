@@ -9,10 +9,10 @@ import "./countries.css"
 
 const TopCasesLanguage: ComponentLanguageMap<{ Title: string }> = {
   EN: {
-    Title: "Top Cases Today",
+    Title: "Top Cases",
   },
   ESP: {
-    Title: "Top Casos Hoy",
+    Title: "Top Casos",
   },
 }
 

@@ -4,8 +4,20 @@ import { ComponentLanguageMap } from "../../context/LanguageContext"
 import useLanguageContext from "../../context/useLanguageContext"
 import { Country } from "../../interfaces/ApiResponse"
 
+type IonColorsType =
+  | "primary"
+  | "secondary"
+  | "tertiary"
+  | "success"
+  | "warning"
+  | "danger"
+  | "light"
+  | "medium"
+  | "dark"
+
 interface Props {
   country: Country
+  color?: IonColorsType
 }
 
 const CountriesPageContentLanguage: ComponentLanguageMap<{
@@ -17,6 +29,7 @@ const CountriesPageContentLanguage: ComponentLanguageMap<{
   Recovered: string
   placeHolder: string
   todayDeaths: string
+  active: string
 }> = {
   EN: {
     Cases: "Cases",
@@ -25,6 +38,7 @@ const CountriesPageContentLanguage: ComponentLanguageMap<{
     placeHolder: "Search",
     Today: "Cases Today",
     todayDeaths: "Deaths Today",
+    active: "Active",
   },
   ESP: {
     Cases: "Casos",
@@ -33,13 +47,19 @@ const CountriesPageContentLanguage: ComponentLanguageMap<{
     placeHolder: "Buscar",
     Today: "Casos Hoy",
     todayDeaths: "Muertes Hoy",
+    active: "Activos",
   },
 }
 
-const CountriesPageContentItem = ({ country }: Props) => {
+const CountriesPageContentItem = ({ country, color }: Props) => {
   const { language } = useLanguageContext()
   return (
-    <IonItem key={country.country} routerLink={`/countries/${country.country}`}>
+    <IonItem
+      color={color ? color : undefined}
+      key={country.country}
+      routerLink={`/countries/${country.country}`}
+      detail
+    >
       <IonLabel className="country-title-label">{country.country}</IonLabel>
       <IonNote
         slot="end"
@@ -79,6 +99,12 @@ const CountriesPageContentItem = ({ country }: Props) => {
           </IonText>
           <IonText color="success">
             <strong> {Intl.NumberFormat().format(country.recovered)}</strong>
+          </IonText>
+        </p>
+        <p>
+          <IonText>{CountriesPageContentLanguage[language].active}: </IonText>
+          <IonText color="warning">
+            <strong> {Intl.NumberFormat().format(country.active)}</strong>
           </IonText>
         </p>
       </IonNote>

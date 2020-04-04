@@ -13,7 +13,7 @@ const initialContext: CountriesContextType = {
 
 const CountriesContext = createContext(initialContext)
 
-const CountriesContextProvider: React.FC = props => {
+const CountriesContextProvider: React.FC = (props) => {
   const [globalData, setGlobalData] = useState<GlobalApiRes | null>(
     initialContext.globalData,
   )
@@ -39,13 +39,13 @@ const CountriesContextProvider: React.FC = props => {
 
   React.useEffect(() => {
     fetch("https://coronavirus-19-api.herokuapp.com/all")
-      .then(res => {
+      .then((res) => {
         return res.json()
       })
-      .then(data => {
+      .then((data) => {
         memoGlobalData.setGlobalData(data)
       })
-      .catch(e => {
+      .catch((e) => {
         console.log(e)
       })
     //eslint-disable-next-line
@@ -53,13 +53,13 @@ const CountriesContextProvider: React.FC = props => {
 
   React.useEffect(() => {
     fetch("https://coronavirus-19-api.herokuapp.com/countries")
-      .then(res => {
+      .then((res) => {
         return res.json()
       })
-      .then(data => {
+      .then((data) => {
         memocountries.setCountries(data)
       })
-      .catch(e => {
+      .catch((e) => {
         console.log(e)
       })
     //eslint-disable-next-line

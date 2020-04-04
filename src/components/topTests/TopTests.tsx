@@ -5,21 +5,21 @@ import { ComponentLanguageMap } from "../../context/LanguageContext"
 import useLanguageContext from "../../context/useLanguageContext"
 import { formatNumber } from "../../utils/formatNumber"
 
-const TopDeathsLanguage: ComponentLanguageMap<{
+const TopTestsLanguage: ComponentLanguageMap<{
   Overall: string
   TopToday: string
 }> = {
   EN: {
-    Overall: "Total Deaths",
-    TopToday: `Today's Deaths`,
+    Overall: "Total Tests",
+    TopToday: `Tests Per One Million`,
   },
   ESP: {
-    Overall: "Muertes en Total",
-    TopToday: `Muertes Hoy`,
+    Overall: "Pruevas en Total",
+    TopToday: `Pruevas Por Millon`,
   },
 }
 
-const TopDeaths = () => {
+const TopTests = () => {
   const { countries } = useCountriesContext()
   const { language } = useLanguageContext()
 
@@ -27,27 +27,27 @@ const TopDeaths = () => {
     <div className="container-md">
       <IonCol>
         <IonText className="title-size">
-          {TopDeathsLanguage[language].Overall}
+          {TopTestsLanguage[language].Overall}
         </IonText>
         <IonList>
           {/* <IonListHeader>
-          <IonText className="text-center">Top Deaths by Country</IonText>
+          <IonText className="text-center">Top Tests by Country</IonText>
         </IonListHeader> */}
           {countries
             .filter((c) => c.country !== "World")
-            .sort((a, b) => (a.deaths > b.deaths ? -1 : 1))
+            .sort((a, b) => (a.totalTests > b.totalTests ? -1 : 1))
             .slice(0, 10)
             .map((c, i) => {
               return (
                 <IonItem
-                  key={c.country + c.deaths + i}
+                  key={c.country + c.totalTests + i}
                   color={i % 2 ? undefined : "light"}
                 >
                   <IonLabel>
                     {i + 1}- {c.country}
                   </IonLabel>
                   <IonText color="danger">
-                    <strong>{formatNumber(c.deaths)}</strong>
+                    <strong>{formatNumber(c.totalTests)}</strong>
                   </IonText>
                 </IonItem>
               )
@@ -56,24 +56,26 @@ const TopDeaths = () => {
       </IonCol>
       <IonCol>
         <IonText className="title-size">
-          {TopDeathsLanguage[language].TopToday}
+          {TopTestsLanguage[language].TopToday}
         </IonText>
         <IonList>
           {countries
             .filter((c) => c.country !== "World")
-            .sort((a, b) => (a.todayDeaths > b.todayDeaths ? -1 : 1))
+            .sort((a, b) =>
+              a.testsPerOneMillion > b.testsPerOneMillion ? -1 : 1,
+            )
             .slice(0, 10)
             .map((c, i) => {
               return (
                 <IonItem
-                  key={c.country + c.deaths + i}
+                  key={c.country + c.testsPerOneMillion + i}
                   color={i % 2 ? undefined : "light"}
                 >
                   <IonLabel>
                     {i + 1}- {c.country}
                   </IonLabel>
                   <IonText color="danger">
-                    <strong>{formatNumber(c.todayDeaths)}</strong>
+                    <strong>{formatNumber(c.testsPerOneMillion)}</strong>
                   </IonText>
                 </IonItem>
               )
@@ -84,4 +86,4 @@ const TopDeaths = () => {
   )
 }
 
-export default TopDeaths
+export default TopTests

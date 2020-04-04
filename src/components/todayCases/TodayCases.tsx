@@ -1,21 +1,25 @@
-import { IonGrid, IonText } from "@ionic/react"
+import { IonGrid, IonText, IonRow, IonCol } from "@ionic/react"
 import React from "react"
 import { ComponentLanguageMap } from "../../context/LanguageContext"
 import useLanguageContext from "../../context/useLanguageContext"
 import TopDeaths from "../topDeaths/TopDeaths"
-import TopCases from "./TopCases"
 import "./todayCases.css"
+import TopCases from "./TopCases"
+import TopTests from "../topTests/TopTests"
 const TodayCasesLanguage: ComponentLanguageMap<{
   TopToday: string
   TopCases: string
+  Tests: string
 }> = {
   EN: {
     TopToday: `Deaths (Top 10 Countries)`,
     TopCases: `Cases (Top 10 Countries)`,
+    Tests: "Tests (Top 10)",
   },
   ESP: {
     TopToday: `Muertes (Top 10 Paises)`,
     TopCases: "Casos (Top 10 Paises)",
+    Tests: "Pruevas (Top 10)",
   },
 }
 
@@ -38,6 +42,20 @@ const TodayCases = () => {
         </IonText>
       </div>
       <TopDeaths />
+      <hr className="special-divider" />
+      <IonRow>
+        <IonCol sizeSm="10" offsetSm="1" className=" ">
+          <div className="ion-text-center">
+            <IonText
+              className="title-size ion-text-center text-upper "
+              color="success"
+            >
+              {TodayCasesLanguage[language].Tests}
+            </IonText>
+          </div>
+          <TopTests />
+        </IonCol>
+      </IonRow>
     </IonGrid>
   )
 }

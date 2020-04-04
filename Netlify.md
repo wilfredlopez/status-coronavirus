@@ -13,7 +13,7 @@ Locate on this folder: ionic-app
 # PROD
 
 ```bash
-yarn build && netlify deploy --prod --dir=build --site=04c6c143-132a-4c68-bbdd-32812bffee59 --message="added spanish language"
+yarn build && netlify deploy --prod --dir=build --site=04c6c143-132a-4c68-bbdd-32812bffee59 --message="UI Improvements and tests data"
 ```
 
 # DEV
