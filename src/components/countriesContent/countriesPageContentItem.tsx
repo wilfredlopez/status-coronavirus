@@ -68,7 +68,7 @@ const CountriesPageContentItem = ({ country, color }: Props) => {
       >
         <p>
           <IonText>{CountriesPageContentLanguage[language].Cases}: </IonText>
-          <IonText color="primary">
+          <IonText>
             <strong> {Intl.NumberFormat().format(country.cases)}</strong>
           </IonText>
         </p>
@@ -76,11 +76,17 @@ const CountriesPageContentItem = ({ country, color }: Props) => {
           <IonText className="pl-1">
             {CountriesPageContentLanguage[language].Today}:{" "}
           </IonText>
-          <IonText color="primary">
+          <IonText>
             <strong> {Intl.NumberFormat().format(country.todayCases)}</strong>
           </IonText>
         </p>
 
+        <p>
+          <IonText>{CountriesPageContentLanguage[language].active}: </IonText>
+          <IonText color="warning">
+            <strong> {Intl.NumberFormat().format(country.active)}</strong>
+          </IonText>
+        </p>
         <IonText>{CountriesPageContentLanguage[language].Deaths}: </IonText>
         <IonText color="danger">
           <strong> {Intl.NumberFormat().format(country.deaths)}</strong>
@@ -99,12 +105,6 @@ const CountriesPageContentItem = ({ country, color }: Props) => {
           </IonText>
           <IonText color="success">
             <strong> {Intl.NumberFormat().format(country.recovered)}</strong>
-          </IonText>
-        </p>
-        <p>
-          <IonText>{CountriesPageContentLanguage[language].active}: </IonText>
-          <IonText color="warning">
-            <strong> {Intl.NumberFormat().format(country.active)}</strong>
           </IonText>
         </p>
       </IonNote>

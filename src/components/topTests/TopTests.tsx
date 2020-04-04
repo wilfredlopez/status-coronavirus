@@ -10,8 +10,8 @@ const TopTestsLanguage: ComponentLanguageMap<{
   TopToday: string
 }> = {
   EN: {
-    Overall: "Total Tests",
-    TopToday: `Tests Per One Million`,
+    Overall: "Total Tested",
+    TopToday: `Tested Per One Million`,
   },
   ESP: {
     Overall: "Pruevas en Total",
@@ -46,7 +46,7 @@ const TopTests = () => {
                   <IonLabel>
                     {i + 1}- {c.country}
                   </IonLabel>
-                  <IonText color="danger">
+                  <IonText color="success">
                     <strong>{formatNumber(c.totalTests)}</strong>
                   </IonText>
                 </IonItem>
@@ -74,7 +74,7 @@ const TopTests = () => {
                   <IonLabel>
                     {i + 1}- {c.country}
                   </IonLabel>
-                  <IonText color="danger">
+                  <IonText color="success">
                     <strong>{formatNumber(c.testsPerOneMillion)}</strong>
                   </IonText>
                 </IonItem>

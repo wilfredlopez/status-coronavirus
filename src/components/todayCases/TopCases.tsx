@@ -46,7 +46,7 @@ const TopCases = () => {
                   <IonLabel>
                     {i + 1}- {c.country}
                   </IonLabel>
-                  <IonText color="danger">
+                  <IonText>
                     <strong>{formatNumber(c.cases)}</strong>
                   </IonText>
                 </IonItem>
@@ -72,7 +72,7 @@ const TopCases = () => {
                   <IonLabel>
                     {i + 1}- {c.country}
                   </IonLabel>
-                  <IonText color="danger">
+                  <IonText>
                     <strong>{formatNumber(c.todayCases)}</strong>
                   </IonText>
                 </IonItem>

@@ -71,7 +71,7 @@ const CountryDetailContent: React.FC<CountryDetailContentProps> = ({
               <IonText>
                 {CountryDetailContentLanguage[language].Cases}:{" "}
               </IonText>
-              <IonText color="primary">
+              <IonText>
                 <strong> {formatNumber(countrie?.cases)}</strong>
               </IonText>
             </p>
@@ -81,8 +81,27 @@ const CountryDetailContent: React.FC<CountryDetailContentProps> = ({
               <IonText>
                 {CountryDetailContentLanguage[language].TodayCases}:{" "}
               </IonText>
-              <IonText color="primary">
+              <IonText>
                 <strong> {formatNumber(countrie?.todayCases)}</strong>
+              </IonText>
+            </p>
+          </IonItem>
+
+          <IonItem>
+            <p>
+              <IonText>
+                {CountryDetailContentLanguage[language].casePer}:{" "}
+                <strong> {formatNumber(countrie?.casesPerOneMillion)}</strong>
+              </IonText>
+            </p>
+          </IonItem>
+          <IonItem>
+            <p>
+              <IonText>
+                {CountryDetailContentLanguage[language].Active}:{" "}
+              </IonText>
+              <IonText color="warning">
+                <strong> {formatNumber(countrie?.active)}</strong>
               </IonText>
             </p>
           </IonItem>
@@ -143,24 +162,9 @@ const CountryDetailContent: React.FC<CountryDetailContentProps> = ({
           <IonItem>
             <p>
               <IonText>
-                {CountryDetailContentLanguage[language].Active}:{" "}
-                <strong> {formatNumber(countrie?.active)}</strong>
-              </IonText>
-            </p>
-          </IonItem>
-
-          <IonItem>
-            <p>
-              <IonText>
-                {CountryDetailContentLanguage[language].casePer}:{" "}
-                <strong> {formatNumber(countrie?.casesPerOneMillion)}</strong>
-              </IonText>
-            </p>
-          </IonItem>
-          <IonItem>
-            <p>
-              <IonText>
                 {CountryDetailContentLanguage[language].testsPerOneMillion}:{" "}
+              </IonText>
+              <IonText color="success">
                 <strong> {formatNumber(countrie?.testsPerOneMillion)}</strong>
               </IonText>
             </p>
@@ -170,6 +174,8 @@ const CountryDetailContent: React.FC<CountryDetailContentProps> = ({
             <p>
               <IonText>
                 {CountryDetailContentLanguage[language].totalTests}:{" "}
+              </IonText>
+              <IonText color="success">
                 <strong> {formatNumber(countrie?.totalTests)}</strong>
               </IonText>
             </p>
