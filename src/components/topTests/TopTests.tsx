@@ -4,6 +4,7 @@ import { useCountriesContext } from "../../context/countriesContext"
 import { ComponentLanguageMap } from "../../context/LanguageContext"
 import useLanguageContext from "../../context/useLanguageContext"
 import { formatNumber } from "../../utils/formatNumber"
+import { EXCLUDED_COUNTRY_NAMES } from "../../constants"
 
 const TopTestsLanguage: ComponentLanguageMap<{
   Overall: string
@@ -34,7 +35,12 @@ const TopTests = () => {
           <IonText className="text-center">Top Tests by Country</IonText>
         </IonListHeader> */}
           {countries
-            .filter((c) => c.country !== "World")
+            .filter(
+              (c) =>
+                !EXCLUDED_COUNTRY_NAMES.some(
+                  (v) => v.toLowerCase() === c.country.toLowerCase(),
+                ),
+            )
             .sort((a, b) => (a.totalTests > b.totalTests ? -1 : 1))
             .slice(0, 10)
             .map((c, i) => {
@@ -54,7 +60,7 @@ const TopTests = () => {
             })}
         </IonList>
       </IonCol>
-      <IonCol>
+      {/* <IonCol>
         <IonText className="title-size">
           {TopTestsLanguage[language].TopToday}
         </IonText>
@@ -81,7 +87,7 @@ const TopTests = () => {
               )
             })}
         </IonList>
-      </IonCol>
+      </IonCol> */}
     </div>
   )
 }

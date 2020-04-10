@@ -33,6 +33,7 @@ const TodayCases = () => {
           {/* Coronavirus COVID-19 Global Cases */}
         </IonText>
       </div>
+
       <TopCases />
       <hr className="special-divider" />
       <div className="wrapper text-upper container-md ">

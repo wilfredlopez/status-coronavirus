@@ -4,6 +4,7 @@ import { useCountriesContext } from "../../context/countriesContext"
 import { ComponentLanguageMap } from "../../context/LanguageContext"
 import useLanguageContext from "../../context/useLanguageContext"
 import { formatNumber } from "../../utils/formatNumber"
+import { EXCLUDED_COUNTRY_NAMES } from "../../constants"
 
 const TopDeathsLanguage: ComponentLanguageMap<{
   Overall: string
@@ -34,7 +35,12 @@ const TopDeaths = () => {
           <IonText className="text-center">Top Deaths by Country</IonText>
         </IonListHeader> */}
           {countries
-            .filter((c) => c.country !== "World")
+            .filter(
+              (c) =>
+                !EXCLUDED_COUNTRY_NAMES.some(
+                  (v) => v.toLowerCase() === c.country.toLowerCase(),
+                ),
+            )
             .sort((a, b) => (a.deaths > b.deaths ? -1 : 1))
             .slice(0, 10)
             .map((c, i) => {
@@ -60,7 +66,12 @@ const TopDeaths = () => {
         </IonText>
         <IonList>
           {countries
-            .filter((c) => c.country !== "World")
+            .filter(
+              (c) =>
+                !EXCLUDED_COUNTRY_NAMES.some(
+                  (v) => v.toLowerCase() === c.country.toLowerCase(),
+                ),
+            )
             .sort((a, b) => (a.todayDeaths > b.todayDeaths ? -1 : 1))
             .slice(0, 10)
             .map((c, i) => {

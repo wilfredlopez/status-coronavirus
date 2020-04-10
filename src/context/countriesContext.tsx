@@ -56,7 +56,7 @@ const CountriesContextProvider: React.FC = (props) => {
       .then((res) => {
         return res.json()
       })
-      .then((data) => {
+      .then((data: CountriesApiRes) => {
         memocountries.setCountries(data)
       })
       .catch((e) => {
